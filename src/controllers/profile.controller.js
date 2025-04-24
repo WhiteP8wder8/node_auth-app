@@ -60,16 +60,6 @@ const changeMail = async (req, res) => {
   res.status(200).json({ message: 'Confirmation email sent to new address' });
 };
 
-const activate = async (req, res) => {
-  const { resetToken } = req.params;
-  const user = await User.findOne({ where: { resetToken } });
-  if (!user) {
-    return res.status(404).json({ message: 'User not found' });
-  }
-
-  res.status(200).json({ message: 'New mail successfully activated' });
-};
-
 const applyNewMail = async (req, res) => {
   const { newEmail } = req.body;
   const { resetToken } = req.params;

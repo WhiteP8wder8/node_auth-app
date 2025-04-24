@@ -7,11 +7,6 @@ export const profileRoute = new express.Router();
 profileRoute.put('/change-name', isAuth, profileController.changeName);
 profileRoute.put('/change-password', isAuth, profileController.changePass);
 profileRoute.post('/change-mail', isAuth, profileController.changeMail);
-profileRoute.get(
-  '/change-mail/:resetToken',
-  isAuth,
-  profileController.activate,
-);
 profileRoute.put(
   '/change-mail/:resetToken',
   isAuth,

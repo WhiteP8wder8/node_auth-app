@@ -1,9 +1,7 @@
-import { v4 as uuidv4 } from 'uuid';
 import { User } from '../models/user.js';
 import { mailService } from './mail.service.js';
 
-async function register(name, email, hashedPassword) {
-  const activationToken = uuidv4();
+async function register(name, email, hashedPassword, activationToken) {
 
   const newUser = await User.create({
     name,

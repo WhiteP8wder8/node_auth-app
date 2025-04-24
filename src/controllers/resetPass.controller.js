@@ -2,7 +2,7 @@ import bcrypt from 'bcrypt';
 import { User } from '../models/user.js';
 import { resetPassService } from '../services/resetPass.service.js';
 
-const genetareToken = async (req, res) => {
+const generateToken = async (req, res) => {
   const { email } = req.body;
 
   const user = await User.findOne({ where: { email } });
@@ -16,13 +16,13 @@ const genetareToken = async (req, res) => {
 
 const updatePass = async (req, res) => {
   const { resetToken } = req.params;
-  const { password, confrimPassword } = req.body;
+  const { password, confirmPassword } = req.body;
   const user = await User.findOne({ where: { resetToken: resetToken } });
   if (!user) {
     return res.status(400).json({ message: 'Invalid or expired token' });
   }
 
-  if (password !== confrimPassword) {
+  if (password !== confirmPassword) {
     return res.status(400).json({ message: 'Passwords do not match' });
   }
 
@@ -34,7 +34,7 @@ const updatePass = async (req, res) => {
   res.status(200).json({ message: 'Password successfully updated' });
 };
 
-export const ressetPassController = {
-  genetareToken,
+export const resetPassController = {
+  generateToken: generateToken,
   updatePass,
 };

@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import { User } from '../models/user.js';
+import { v4 as uuidv4 } from 'uuid';
 import bcrypt from 'bcrypt';
 import { userService } from '../services/user.service.js';
 import { jwtService } from '../services/jwt.service.js';
@@ -8,7 +9,8 @@ const register = async (req, res) => {
   const { name, email, password } = req.body;
 
   const hashedPassword = await bcrypt.hash(password, 10);
-  await userService.register(name, email, hashedPassword);
+  const activationToken = uuidv4();
+  await userService.register(name, email, hashedPassword, activationToken);
   res.send({ message: 'OK' });
 };
 
