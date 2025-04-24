@@ -1,5 +1,5 @@
-import { client } from './src/utils/db.js';
-import { User } from './src/models/user.js';
+const { client } = require('./src/utils/db.js');
+const { User } = require('./src/models/user.js');
 
 await client.sync({
   force: true,

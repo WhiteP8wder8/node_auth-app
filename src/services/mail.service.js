@@ -1,5 +1,6 @@
-import 'dotenv/config';
-import nodemailer from 'nodemailer';
+require('dotenv/config');
+
+const nodemailer = require('nodemailer');
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
@@ -72,7 +73,7 @@ function sendWarningEmail(email) {
   });
 }
 
-export const mailService = {
+exports.mailService = {
   sendActivationEmail,
   sendResetPassEmail,
   sendResetEmailEmail,

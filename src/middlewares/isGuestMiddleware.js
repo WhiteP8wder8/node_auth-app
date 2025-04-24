@@ -1,6 +1,6 @@
-import jwt from 'jsonwebtoken';
+const jwt = require('jsonwebtoken');
 
-export const isGuest = (req, res, next) => {
+const isGuest = (req, res, next) => {
   const token = req.cookies.refreshToken;
 
   if (!token) {
@@ -15,3 +15,5 @@ export const isGuest = (req, res, next) => {
     return next();
   }
 };
+
+module.exports = { isGuest };

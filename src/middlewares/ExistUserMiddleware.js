@@ -1,6 +1,6 @@
-import { User } from '../models/user.js';
+const { User } = require('../models/user');
 
-export const existUserMiddleware = async (req, res, next) => {
+const existUserMiddleware = async (req, res, next) => {
   const { name, email, password } = req.body;
 
   const existEmail = await User.findOne({ where: { email } });
@@ -18,3 +18,5 @@ export const existUserMiddleware = async (req, res, next) => {
 
   next();
 };
+
+module.exports = { existUserMiddleware };

@@ -1,12 +1,13 @@
 'use strict';
-import 'dotenv/config';
-import express from 'express';
-import cors from 'cors';
-import cookieParser from 'cookie-parser';
-import { authRoute } from './routes/auth.route.js';
-import { resetPassRoute } from './routes/resetPass.route.js';
-import { profileRoute } from './routes/profile.route.js';
-import { pageNotFound } from './error/pageNotFound.js';
+require('dotenv/config');
+
+const express = require('express');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
+const { authRoute } = require('./routes/auth.route.js');
+const { resetPassRoute } = require('./routes/resetPass.route.js');
+const { profileRoute } = require('./routes/profile.route.js');
+const { pageNotFound } = require('./error/pageNotFound.js');
 
 const app = express();
 

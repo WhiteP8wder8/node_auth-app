@@ -1,6 +1,6 @@
-import { v4 as uuidv4 } from 'uuid';
-import { User } from '../models/user.js';
-import { mailService } from './mail.service.js';
+const { v4: uuidv4 } = require('uuid');
+const { User } = require('../models/user');
+const { mailService } = require('./mail.service.js');
 
 const changeMail = async (user, newEmail) => {
   const resetToken = uuidv4();
@@ -20,7 +20,7 @@ const applyNewMail = async (user, newEmail) => {
   await user.save();
 };
 
-export const profileService = {
+exports.profileService = {
   changeMail,
   applyNewMail,
 };

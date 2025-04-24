@@ -1,9 +1,10 @@
-import 'dotenv/config';
-import { User } from '../models/user.js';
-import { v4 as uuidv4 } from 'uuid';
-import bcrypt from 'bcrypt';
-import { userService } from '../services/user.service.js';
-import { jwtService } from '../services/jwt.service.js';
+require('dotenv/config');
+
+const { User } = require('../models/user');
+const { v4: uuidv4 } = require('uuid');
+const bcrypt = require('bcrypt');
+const { userService } = require('../services/user.service');
+const { jwtService } = require('../services/jwt.service');
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
@@ -77,7 +78,7 @@ const logout = (req, res) => {
   res.send({ message: 'Logged out successfully' });
 };
 
-export const authController = {
+exports.authController = {
   register,
   activate,
   login,

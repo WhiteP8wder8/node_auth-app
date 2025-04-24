@@ -1,6 +1,6 @@
-import bcrypt from 'bcrypt';
-import { User } from '../models/user.js';
-import { resetPassService } from '../services/resetPass.service.js';
+const bcrypt = require('bcrypt');
+const { User } = require('../models/user');
+const { resetPassService } = require('../services/resetPass.service');
 
 const generateToken = async (req, res) => {
   const { email } = req.body;
@@ -37,7 +37,7 @@ const updatePass = async (req, res) => {
   res.status(200).json({ message: 'Password successfully updated' });
 };
 
-export const resetPassController = {
+exports.resetPassController = {
   generateToken: generateToken,
   updatePass,
 };

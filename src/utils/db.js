@@ -1,7 +1,8 @@
-import 'dotenv/config';
-import { Sequelize } from 'sequelize';
+require('dotenv/config');
 
-export const client = new Sequelize({
+const { Sequelize } = require('sequelize');
+
+exports.client = new Sequelize({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
   username: process.env.DB_USER,

@@ -1,6 +1,6 @@
-import { User } from '../models/user.js';
-import { profileService } from '../services/profile.service.js';
-import bcrypt from 'bcrypt';
+const { User } = require('../models/user');
+const { profileService } = require('../services/profile.service');
+const bcrypt = require('bcrypt');
 
 const changeName = async (req, res) => {
   const { name } = req.body;
@@ -83,7 +83,7 @@ const applyNewMail = async (req, res) => {
   res.status(200).json({ message: 'Your mail was successfully changed!' });
 };
 
-export const profileController = {
+exports.profileController = {
   changeName,
   changePass,
   changeMail,

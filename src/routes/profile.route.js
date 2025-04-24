@@ -1,8 +1,8 @@
-import express from 'express';
-import { profileController } from '../controllers/profile.controller.js';
-import { isAuth } from '../middlewares/isAuthMiddleware.js';
+const express = require('express');
+const { profileController } = require('../controllers/profile.controller.js');
+const { isAuth } = require('../middlewares/isAuthMiddleware.js');
 
-export const profileRoute = new express.Router();
+const profileRoute = new express.Router();
 
 profileRoute.put('/change-name', isAuth, profileController.changeName);
 profileRoute.put('/change-password', isAuth, profileController.changePass);
@@ -13,3 +13,5 @@ profileRoute.put(
   isAuth,
   profileController.applyNewMail,
 );
+
+module.exports = { profileRoute };
