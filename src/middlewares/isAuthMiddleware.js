@@ -9,6 +9,7 @@ export const isAuth = (req, res, next) => {
 
   try {
     const payload = jwt.verify(token, process.env.JWT_REFRESHKEY);
+
     req.user = payload;
 
     next();

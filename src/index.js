@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 3005;
 
 app.use(express.json());
 app.use(cookieParser());
+
 app.use(
   cors({
     origin: process.env.CLIENT_SERVER,
@@ -25,6 +26,4 @@ app.use('/password', resetPassRoute);
 app.use('/profile', profileRoute);
 app.use(pageNotFound);
 
-app.listen(PORT, () => {
-  console.log(`Server is working on port: ${PORT}`);
-});
+app.listen(PORT);

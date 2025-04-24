@@ -5,6 +5,7 @@ import { resetPassController } from '../controllers/resetPass.controller.js';
 export const resetPassRoute = new express.Router();
 
 resetPassRoute.post('/reset', isGuest, resetPassController.generateToken);
+
 resetPassRoute.put(
   '/reset/:resetToken',
   isGuest,

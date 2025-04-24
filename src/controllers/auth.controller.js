@@ -10,6 +10,7 @@ const register = async (req, res) => {
 
   const hashedPassword = await bcrypt.hash(password, 10);
   const activationToken = uuidv4();
+
   await userService.register(name, email, hashedPassword, activationToken);
   res.send({ message: 'OK' });
 };
@@ -36,6 +37,7 @@ const login = async (req, res) => {
   if (!user) {
     return res.status(401).json({ message: 'Wrong mail or password' });
   }
+
   if (user.activationToken !== null) {
     return res
       .status(403)
@@ -43,6 +45,7 @@ const login = async (req, res) => {
   }
 
   const isPasswordValid = await bcrypt.compare(password, user.password);
+
   if (!isPasswordValid) {
     return res.status(401).json({ message: 'Wrong mail or password' });
   }

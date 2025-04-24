@@ -6,6 +6,7 @@ const generateToken = async (req, res) => {
   const { email } = req.body;
 
   const user = await User.findOne({ where: { email } });
+
   if (!user) {
     return res.status(404).json({ message: 'Mail not exist' });
   }
@@ -18,6 +19,7 @@ const updatePass = async (req, res) => {
   const { resetToken } = req.params;
   const { password, confirmPassword } = req.body;
   const user = await User.findOne({ where: { resetToken: resetToken } });
+
   if (!user) {
     return res.status(400).json({ message: 'Invalid or expired token' });
   }
@@ -27,6 +29,7 @@ const updatePass = async (req, res) => {
   }
 
   const newPassword = await bcrypt.hash(password, 10);
+
   user.password = newPassword;
   user.resetToken = null;
   await user.save();
